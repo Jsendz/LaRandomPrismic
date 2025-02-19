@@ -7,9 +7,16 @@ import { notFound } from "next/navigation";
 import * as prismic from "@prismicio/client";
 
 /**
+ * Define PageProps for type safety
+ */
+interface PageProps {
+  params: { uid: string };
+}
+
+/**
  * Generate metadata dynamically for pages and events
  */
-export async function generateMetadata({ params }: { params: { uid: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const client = createClient();
   try {
     const document = await client.getByUID("page", params.uid).catch(() => null);
@@ -31,7 +38,7 @@ export async function generateMetadata({ params }: { params: { uid: string } }):
 /**
  * Dynamic Page Component (Handles Any Page, Including `/events`)
  */
-export default async function DynamicPage({ params }: { params: { uid: string } }) {
+export default async function DynamicPage({ params }: PageProps) {
   const client = createClient();
   try {
     const document = await client.getByUID("page", params.uid).catch(() => null);
