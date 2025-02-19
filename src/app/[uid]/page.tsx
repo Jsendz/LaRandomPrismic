@@ -7,11 +7,11 @@ import { notFound } from "next/navigation";
 import * as prismic from "@prismicio/client";
 
 /**
- * Define PageProps for type safety
+ * Define Next.js 15 PageProps
  */
-interface PageProps {
+export type PageProps = {
   params: { uid: string };
-}
+};
 
 /**
  * Generate metadata dynamically for pages and events
