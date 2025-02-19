@@ -1,0 +1,107 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"titulo",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Qui laborum sit amet reprehenderit deserunt tempor occaecat proident dolor dolore nisi laboris. Sit consequat ullamco reprehenderit eu ipsum enim aute reprehenderit. Veniam ut ad ea ea ut."
+											}
+										}
+									]
+								}
+							],
+							[
+								"imagen",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+										"width": 4752,
+										"height": 3168
+									},
+									"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+									"width": 4752,
+									"height": 3168,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"descripcion",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Incididunt ipsum esse officia veniam aute ad excepteur. Deserunt minim exercitation esse Lorem cupidatat veniam tempor qui et aliquip fugiat eu. Nulla pariatur aliqua reprehenderit et voluptate occaecat esse reprehenderit enim id."
+											}
+										}
+									]
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "2656f962-9ac8-407c-b251-35df8c8ac18c",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "burn"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"titulo_pagina": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Anim quis est anim aliquip. Eu enim aliqua ut id reprehenderit. Quis mollit ipsum aute in deserunt magna commodo."
+						}
+					}
+				]
+			},
+			"subtitulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Et non est mollit irure qui in."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

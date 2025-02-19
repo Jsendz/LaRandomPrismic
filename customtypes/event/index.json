@@ -1,0 +1,64 @@
+{
+  "format": "custom",
+  "id": "event",
+  "label": "Event",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "main": {
+        "type": "Image",
+        "config": {
+          "label": "main",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "event_page": {
+        "type": "Link",
+        "config": {
+          "label": "event_page",
+          "select": "document",
+          "repeat": false,
+          "customtypes": ["event"]
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "meta_description",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "single_event": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

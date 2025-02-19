@@ -1,0 +1,45 @@
+{
+  "id": "single_event",
+  "type": "SharedSlice",
+  "name": "SingleEvent",
+  "description": "SingleEvent",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "imagen_evento": {
+          "type": "Image",
+          "config": {
+            "label": "imagen_evento",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "titulo_evento": {
+          "type": "StructuredText",
+          "config": {
+            "label": "titulo_evento",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3"
+          }
+        },
+        "texto_evento": {
+          "type": "StructuredText",
+          "config": {
+            "label": "texto_evento",
+            "placeholder": "texto-evento",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

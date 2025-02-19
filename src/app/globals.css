@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.rich-text h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 2rem 0;
+  }
+  
+  .rich-text p {
+    margin: 2rem 0;
+  }

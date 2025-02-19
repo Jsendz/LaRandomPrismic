@@ -1,0 +1,74 @@
+{
+  "id": "eventos",
+  "type": "SharedSlice",
+  "name": "EventList",
+  "description": "Eventos",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3,heading2"
+          }
+        },
+        "subtitulo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "subtitulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3,paragraph"
+          }
+        },
+        "modulo": {
+          "type": "Group",
+          "config": {
+            "label": "modulo",
+            "repeat": true,
+            "fields": {
+              "imagen": {
+                "type": "Image",
+                "config": {
+                  "label": "imagen",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "titulomodulo": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "titulomodulo",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading2"
+                }
+              },
+              "boton": {
+                "type": "Link",
+                "config": {
+                  "label": "boton",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
