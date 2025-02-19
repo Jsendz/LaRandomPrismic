@@ -45,6 +45,13 @@
           "placeholder": ""
         }
       },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "meta_description",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
