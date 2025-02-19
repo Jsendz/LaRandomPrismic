@@ -1,66 +1,52 @@
 import { Metadata } from "next";
-import { createClient } from "@/prismicio";
-import { SliceZone } from "@prismicio/react";
-import { components } from "@/slices";
-import { PrismicText } from "@prismicio/react";
 import { notFound } from "next/navigation";
-import * as prismic from "@prismicio/client";
+import { isFilled, asImageSrc } from "@prismicio/client";
+import { SliceZone } from "@prismicio/react";
 
-/**
- * Define Next.js 15 PageProps
- */
-export type PageProps = {
-  params: { uid: string };
-};
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
 
-/**
- * Generate metadata dynamically for pages and events
- */
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+type Params = { uid: string };
+
+export default async function Page({ params }: { params: Promise<Params> }) {
+  const { uid } = await params;
   const client = createClient();
-  try {
-    const document = await client.getByUID("page", params.uid).catch(() => null);
+  const page = await client.getByUID("page", uid).catch(() => notFound());
 
-    if (!document) {
-      return { title: "Page Not Found", description: "This page does not exist." };
-    }
-
-    return {
-      title: prismic.asText(document.data.title) || "Untitled",
-      description: document.data.meta_description || "Default description",
-    };
-  } catch (error) {
-    console.error("Error fetching metadata:", error);
-    return { title: "Page Not Found", description: "This page does not exist." };
-  }
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
 
-/**
- * Dynamic Page Component (Handles Any Page, Including `/events`)
- */
-export default async function DynamicPage({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { uid } = await params;
   const client = createClient();
-  try {
-    const document = await client.getByUID("page", params.uid).catch(() => null);
-    if (!document) return notFound();
+  const page = await client.getByUID("page", uid).catch(() => notFound());
 
-    return (
-      <article className="container mx-auto py-12">
-        {/* Page Title */}
-        {document.data.title && (
-          <h1 className="text-4xl font-bold text-center mb-6">
-            <PrismicText field={document.data.title} />
-          </h1>
-        )}
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+    openGraph: {
+      title: isFilled.keyText(page.data.meta_title)
+        ? page.data.meta_title
+        : undefined,
+      description: isFilled.keyText(page.data.meta_description)
+        ? page.data.meta_description
+        : undefined,
+      images: isFilled.image(page.data.meta_image)
+        ? [asImageSrc(page.data.meta_image)]
+        : undefined,
+    },
+  };
+}
 
-        {/* Slice Zone (Dynamically Renders All Slices, Including EventList) */}
-        <div className="w-full max-w-6xl mx-auto">
-          <SliceZone slices={document.data.slices} components={components} />
-        </div>
-      </article>
-    );
-  } catch (error) {
-    console.error("Error fetching document:", error);
-    return notFound();
-  }
+export async function generateStaticParams() {
+  const client = createClient();
+  const pages = await client.getAllByType("page");
+
+  return pages.map((page) => {
+    return { uid: page.uid };
+  });
 }
