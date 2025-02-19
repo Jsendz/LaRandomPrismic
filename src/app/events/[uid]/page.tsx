@@ -1,50 +1,52 @@
-// app/events/[uid]/page.tsx
 import { Metadata } from "next";
-import { createClient } from "@/prismicio"; // Assuming your prismic client is here
-import { SliceZone } from "@prismicio/react";
-import { components } from "@/slices"; // Assuming your slices components are here
-import { PrismicText } from "@prismicio/react";
 import { notFound } from "next/navigation";
-import * as prismic from "@prismicio/client";
+import { isFilled, asImageSrc } from "@prismicio/client";
+import { SliceZone } from "@prismicio/react";
 
-export async function generateMetadata({ params }: { params: { uid: string } }): Promise<Metadata> {
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+
+type Params = { uid: string };
+
+export default async function Page({ params }: { params: Promise<Params> }) {
+  const { uid } = await params;
   const client = createClient();
-  try {
-    const document = await client.getByUID("event", params.uid).catch(() => null); // Fetch by UID of "event" type
+  const page = await client.getByUID("event", uid).catch(() => notFound());
 
-    if (!document) {
-      return { title: "Event Not Found", description: "This event does not exist." };
-    }
-
-    return {
-      title: prismic.asText(document.data.title) || "Untitled Event", // Adjust title as needed
-      description: document.data.meta_description || "Default event description", // Adjust description field
-      // ... any other metadata you need for events
-    };
-  } catch (error) {
-    console.error("Error fetching event metadata:", error);
-    return { title: "Event Not Found", description: "This event does not exist." };
-  }
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
 
-export default async function EventPage({ params }: { params: { uid: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { uid } = await params;
   const client = createClient();
-  try {
-    const document = await client.getByUID("event", params.uid).catch(() => null); // Fetch by UID of "event" type
-    if (!document) return notFound();
+  const page = await client.getByUID("event", uid).catch(() => notFound());
 
-    return (
-      <article className="container mx-auto py-12">
-        
+  return {
+    title: page.data.meta_description,
+    description: page.data.meta_description,
+    openGraph: {
+      title: isFilled.keyText(page.data.meta_description)
+        ? page.data.meta_description
+        : undefined,
+      description: isFilled.keyText(page.data.meta_description)
+        ? page.data.meta_description
+        : undefined,
+      images: isFilled.image(page.data.main)
+        ? [asImageSrc(page.data.main)]
+        : undefined,
+    },
+  };
+}
 
-        {/* Slice Zone (For any slices specific to events) */}
-        <div className="w-full">
-          <SliceZone slices={document.data.slices} components={components} />
-        </div>
-      </article>
-    );
-  } catch (error) {
-    console.error("Error fetching event:", error);
-    return notFound();
-  }
+export async function generateStaticParams() {
+  const client = createClient();
+  const pages = await client.getAllByType("event");
+
+  return pages.map((page) => {
+    return { uid: page.uid };
+  });
 }
