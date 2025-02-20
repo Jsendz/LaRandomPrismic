@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
     // Send Email using Resend
     const emailResponse = await resend.emails.send({
-      from: "Your Website <noreply@yourdomain.com>", // Use a verified domain
+      from: "https://www.larandom.com/", // Use a verified domain
       to: "larandomcollective@gmail.com", // Replace with your receiving email
       subject: `New Contact Form Submission from ${name}`,
       html: `
