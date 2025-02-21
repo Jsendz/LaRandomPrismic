@@ -32,7 +32,7 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu />
+            <MdMenu color="black" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
@@ -49,11 +49,11 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(false)}
           >
-            <MdClose />
+            <MdClose color="white" />
             <span className="sr-only">Close menu</span>
           </button>
 
-          <div className="grid justify-items-end gap-8">
+          <div className="grid justify-items-end gap-8 text-white">
             {settings.data.navigation.map((item) => {
               if (item.cta_button) {
                 return (

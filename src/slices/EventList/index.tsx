@@ -17,8 +17,9 @@ const Eventos = ({ slice }: EventosProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="py-12 bg-gray-100 w-full"
     >
+      
       {/* Blog Title & Subtitle */}
-      <div className="text-center mb-12">
+      <div className="text-center my-32">
         
         {isFilled.richText(slice.primary.subtitulo) && (
           <h2 className="text-xl md:text-6xl font-semibold text-slate-800">
@@ -28,7 +29,7 @@ const Eventos = ({ slice }: EventosProps): JSX.Element => {
       </div>
 
       {/* Blog Post Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 max-w-7xl mx-auto my-32">
         {slice.primary.modulo.map((item, index) => (
           <div key={index} className="p-6 bg-gradient-to-r from-orange-300 to-rose-300 rounded-lg shadow-md hover:shadow-lg transition text-center flex flex-col">
             {/* Featured Image */}
@@ -42,7 +43,7 @@ const Eventos = ({ slice }: EventosProps): JSX.Element => {
 
             {/* Title Module */}
             {isFilled.richText(item.titulomodulo) && (
-              <div className="my-6 max-w-lg">
+              <div className="my-6 max-w-lg text-left pl-2">
                 <PrismicRichText
                   field={item.titulomodulo}
                   components={{
@@ -57,8 +58,8 @@ const Eventos = ({ slice }: EventosProps): JSX.Element => {
 
             {/* Read More Button */}
             {isFilled.link(item.boton) && (
-              <PrismicNextLink field={item.boton} className="text-blue-500 font-medium hover:underline">
-                Read More →
+              <PrismicNextLink field={item.boton} className="text-blue-500 font-medium hover:underline text-left pl-2">
+                Descobreix
               </PrismicNextLink>
             )}
           </div>

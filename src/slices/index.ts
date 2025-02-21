@@ -11,6 +11,7 @@ export const components = {
   eventos: dynamic(() => import("./EventList")),
   hero: dynamic(() => import("./Hero")),
   hero_2: dynamic(() => import("./Hero2")),
+  image_carousel: dynamic(() => import("./ImageCarousel")),
   post: dynamic(() => import("./Post")),
   rich_text: dynamic(() => import("./RichText")),
   single_event: dynamic(() => import("./SingleEvent")),

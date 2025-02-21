@@ -29,7 +29,7 @@ type RichTextProps = SliceComponentProps<Content.RichTextSlice>;
 const RichText = ({ slice }: RichTextProps): JSX.Element => {
   return (
     <section >
-      <div className="text-xl md:text-6xl font-semibold md:text-center my-20">
+      <div className="text-3xl md:text-6xl font-semibold text-center my-12 md:my-32">
       <PrismicRichText field={slice.primary.content} components={components} />
       </div>
     </section>

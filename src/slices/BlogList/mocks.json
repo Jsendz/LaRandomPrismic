@@ -15,9 +15,9 @@
 									"__TYPE__": "StructuredTextContent",
 									"value": [
 										{
-											"type": "paragraph",
+											"type": "heading3",
 											"content": {
-												"text": "Qui laborum sit amet reprehenderit deserunt tempor occaecat proident dolor dolore nisi laboris. Sit consequat ullamco reprehenderit eu ipsum enim aute reprehenderit. Veniam ut ad ea ea ut."
+												"text": "Above"
 											}
 										}
 									]
@@ -66,8 +66,8 @@
 							[
 								"link",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "2656f962-9ac8-407c-b251-35df8c8ac18c",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "https://slicemachine.dev",

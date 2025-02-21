@@ -1,32 +1,22 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { NextRequest, NextResponse } from 'next/server';
+import SubmitJSON from 'submitjson'
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const sj = new SubmitJSON({
+  apiKey: process.env.SUBMIT_JSON_API_KEY as string,
+  endpoint: process.env.ENDPOINT
+})
 
-export async function POST(req: Request) {
-  try {
-    const { name, email, message } = await req.json();
+export async function POST(request: NextRequest) {
 
-    // Basic Validation
-    if (!name || !email || !message) {
-      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
-    }
+  const body = await request.json();
 
-    // Send Email using Resend
-    const emailResponse = await resend.emails.send({
-      from: "https://www.larandom.com/", // Use a verified domain
-      to: "larandomcollective@gmail.com", // Replace with your receiving email
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
-    });
+  const response = await sj.submit(body);
 
-    return NextResponse.json({ success: true, data: emailResponse });
-  } catch (error) {
-    console.error("Error sending email:", error);
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+  if (response) {
+    return NextResponse.json({ message: `Form is submit`, response }, { status: 200 })
   }
+  else {
+    return NextResponse.json({ message: `something wrong`, response }, { status: 400 })
+  }
+
 }

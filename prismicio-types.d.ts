@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type ArtistDocumentDataSlicesSlice = SingleEventSlice;
+type ArtistDocumentDataSlicesSlice = ImageCarouselSlice | SingleEventSlice;
 
 /**
  * Content for Artist documents
@@ -167,7 +167,10 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type EventDocumentDataSlicesSlice = HeroSlice | SingleEventSlice;
+type EventDocumentDataSlicesSlice =
+  | ImageCarouselSlice
+  | HeroSlice
+  | SingleEventSlice;
 
 /**
  * Content for Event documents
@@ -1320,6 +1323,78 @@ type Hero2SliceVariation = Hero2SliceDefault | Hero2SliceImageRight;
 export type Hero2Slice = prismic.SharedSlice<"hero_2", Hero2SliceVariation>;
 
 /**
+ * Item in *ImageCarousel → Default → Primary → carousel*
+ */
+export interface ImageCarouselSliceDefaultPrimaryCarouselItem {
+  /**
+   * image field in *ImageCarousel → Default → Primary → carousel*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_carousel.default.primary.carousel[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *ImageCarousel → Default → Primary*
+ */
+export interface ImageCarouselSliceDefaultPrimary {
+  /**
+   * carousel field in *ImageCarousel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_carousel.default.primary.carousel[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  carousel: prismic.GroupField<
+    Simplify<ImageCarouselSliceDefaultPrimaryCarouselItem>
+  >;
+
+  /**
+   * titulo field in *ImageCarousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_carousel.default.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ImageCarousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageCarouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageCarouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageCarousel*
+ */
+type ImageCarouselSliceVariation = ImageCarouselSliceDefault;
+
+/**
+ * ImageCarousel Shared Slice
+ *
+ * - **API ID**: `image_carousel`
+ * - **Description**: ImageCarousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageCarouselSlice = prismic.SharedSlice<
+  "image_carousel",
+  ImageCarouselSliceVariation
+>;
+
+/**
  * Primary content in *Post → Default → Primary*
  */
 export interface PostSliceDefaultPrimary {
@@ -1578,6 +1653,11 @@ declare module "@prismicio/client" {
       Hero2SliceVariation,
       Hero2SliceDefault,
       Hero2SliceImageRight,
+      ImageCarouselSlice,
+      ImageCarouselSliceDefaultPrimaryCarouselItem,
+      ImageCarouselSliceDefaultPrimary,
+      ImageCarouselSliceVariation,
+      ImageCarouselSliceDefault,
       PostSlice,
       PostSliceDefaultPrimary,
       PostSliceVariation,

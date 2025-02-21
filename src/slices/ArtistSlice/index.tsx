@@ -19,14 +19,14 @@ const ArtistSlice = ({ slice }: ArtistSliceProps): JSX.Element => {
     > 
     <div className="w-full max-w-7xl mx-auto h-full lg:h-screen">
       
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 ">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 my-12 md:my-32 ">
       {slice.primary.artistlist.map((item, index) => (
-        <div  key={index} className="group relative block">
+        <div  key={index} className="group relative block mx-auto">
          {isFilled.image(item.imagen_artista) && (
                       <PrismicNextImage
                         field={item.imagen_artista}
                         alt=""
-                        className="w-[250px]  object-cover rounded-lg mb-4"
+                        className="w-full md:w-[250px]  object-cover rounded-lg mb-4"
                       />
                     )}
  

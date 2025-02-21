@@ -21,25 +21,26 @@ const SingleEvent = ({ slice }: SingleEventProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <article className="container mx-auto py-12">
-        <div className="w-full flex flex-col md:flex-row">
-          <div className="w-full">
+        <div className="w-full flex flex-col md:flex-row max-w-7xl justify-center mx-auto my-32 px-12">
+          <div className="w-full flex justify-center">
           {isFilled.image(slice.primary.imagen_evento) && (
           <PrismicNextImage
-            className="es-call-to-action__image"
+            className="es-call-to-action__image rounded-xl w-[350px]"
             field={slice.primary.imagen_evento}
            alt=""
+           
           />
         )}
           </div>
-          <div className="w-full">
+          <div className="w-full ">
             <div>
             {isFilled.richText(slice.primary.titulo_evento) && (
-      <h2 className="text-balance text-center text-4xl font-medium md:text-6xl mb-10" >  
+      <h2 className="text-balance  text-4xl font-medium md:text-6xl mb-10" >  
       <PrismicText field={slice.primary.titulo_evento} /></h2>
       )}
             </div>
       {isFilled.richText(slice.primary.texto_evento) && (
-        <p className="text-xl  text-center mb-6">
+        <p className="text-xl  text-balance mb-6">
           <PrismicText field={slice.primary.texto_evento} />
         </p>
       )}
