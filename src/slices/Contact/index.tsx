@@ -62,11 +62,11 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
 
   return (
     <section className="relative w-full min-h-screen text-center text-white ">
-      <div className="w-full  max-w-7xl mx-auto my-32">
-        <div className=" flex flex-row justify-center ">
+      <div className="w-full  max-w-7xl mx-auto md:my-32">
+        <div className="w-full flex flex-row justify-center  ">
 
 
-        <div className="w-1/3 z-10 max-w-2xl px-6 md:px-12 py-12 bg-white bg-opacity-90 rounded-lg shadow-lg text-black">
+        <div className="w-full md:w-1/3 z-10 max-w-2xl px-6 md:px-12 py-12 bg-white bg-opacity-90 rounded-lg shadow-lg text-black">
           {isFilled.richText(slice.primary.title) && (
             <div className="text-3xl md:text-5xl font-bold mb-4 text-left">
               <PrismicRichText field={slice.primary.title} />

@@ -30,28 +30,14 @@ const About = ({ slice }: AboutProps): JSX.Element => {
       <div className="p-8 rounded-lg max-w-3xl absolute right-3 bottom-20">
         
           {isFilled.richText(slice.primary.textotote) && (
-            <div className="text-balance text-black text-4xl md:text-5xl font-bold">
+            <div className=" about text-balance text-black text-4xl md:text-5xl font-bold">
               <PrismicRichText field={slice.primary.textotote} />
             </div>
-          )}  {isFilled.richText(slice.primary.textolima) && (
-            <div className="text-balance text-4xl text-lime-500 md:text-5xl font-bold">
-              <PrismicRichText field={slice.primary.textolima} />
-            </div>
-          )}
+          )} 
+          
+          
+          
          
-          
-          
-          {isFilled.richText(slice.primary.textotote2) && (
-            <div className="text-balance text-4xl text-black md:text-5xl font-bold">
-              <PrismicRichText field={slice.primary.textotote2} />
-            </div>
-          )}
-          {isFilled.richText(slice.primary.textolima2) && (
-            <div className="text-balance text-lime-500 text-4xl md:text-5xl font-bold">
-              <PrismicRichText field={slice.primary.textolima2} />
-            </div>
-          )}
-          
         </div>
       </div>
     </section>

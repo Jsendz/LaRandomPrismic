@@ -1,7 +1,14 @@
+"use client"
+
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import dynamic from "next/dynamic";
+
+// ✅ Dynamically Import Swiper for Next.js (Fixes SSR Issue)
+const SwiperReact = dynamic(() => import("swiper/react").then((mod) => mod.Swiper), { ssr: false });
+const SwiperSlide = dynamic(() => import("swiper/react").then((mod) => mod.SwiperSlide), { ssr: false });
+
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -17,6 +24,8 @@ export type ImageCarouselProps =
  * Component for "ImageCarousel" Slices.
  */
 const ImageCarousel = ({ slice }: ImageCarouselProps): JSX.Element => {
+  console.log("Slice Data:", slice); // ✅ Debugging
+  console.log("Slice Items:", slice.items); // ✅ Check if images exist
 
   if (!slice.items.length) return <p className="text-center text-gray-500">No images available</p>;
   return (
@@ -24,16 +33,17 @@ const ImageCarousel = ({ slice }: ImageCarouselProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-     <section className="w-full max-w-7xl mx-auto py-8 px-4">
+     <div className="w-full max-w-7xl mx-auto py-8 px-4">
       {isFilled.richText(slice.primary.titulo) && (
         <div className="text-center text-3xl font-bold mb-6">
           <PrismicRichText field={slice.primary.titulo} />
         </div>
       )}
 
-      <Swiper
+      <SwiperReact
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
+        slidesPerView={1}
         breakpoints={{
           640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
@@ -55,9 +65,11 @@ const ImageCarousel = ({ slice }: ImageCarouselProps): JSX.Element => {
             )}
           </SwiperSlide>
         ))}
-      </Swiper>
+      </SwiperReact>
+      
+    </div>
     </section>
-    </section>
+    
   );
 };
 

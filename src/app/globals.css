@@ -12,3 +12,16 @@
   .rich-text p {
     margin: 2rem 0;
   }
+
+  .about h1 {
+    font-size: 3rem;
+    font-weight: bold;
+
+  }
+
+  .about h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: chartreuse;
+
+  }
