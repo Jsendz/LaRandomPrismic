@@ -1,0 +1,72 @@
+{
+  "id": "content_features",
+  "type": "SharedSlice",
+  "name": "ContentFeatures",
+  "description": "ContentFeatures",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "texto": {
+          "type": "StructuredText",
+          "config": {
+            "label": "texto",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "grid": {
+          "type": "Group",
+          "config": {
+            "label": "grid",
+            "repeat": true,
+            "fields": {
+              "imagen": {
+                "type": "Image",
+                "config": {
+                  "label": "imagen",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "titulo": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "titulo",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "texto": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "texto",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

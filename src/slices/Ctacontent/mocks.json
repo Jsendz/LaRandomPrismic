@@ -1,0 +1,63 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore et in do. In ipsum aliqua exercitation deserunt ut amet. Cillum consequat reprehenderit velit quis amet laboris."
+						}
+					}
+				]
+			},
+			"texto": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nisi ad anim cupidatat sunt ad velit pariatur Lorem aute consequat elit nisi. Esse consequat labore voluptate amet tempor esse aliqua consequat minim do do tempor ex Lorem. Adipisicing sit incididunt sint veniam in laborum nostrud excepteur eiusmod nisi tempor ipsum qui reprehenderit."
+						}
+					}
+				]
+			},
+			"imagen": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51",
+					"width": 2545,
+					"height": 2545
+				},
+				"url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51",
+				"width": 2545,
+				"height": 2545,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"boton": {
+				"__TYPE__": "LinkContent",
+				"key": "886c5711-26a1-4c8e-844e-c32af059ac3e",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "metal"
+				}
+			}
+		},
+		"items": []
+	}
+]

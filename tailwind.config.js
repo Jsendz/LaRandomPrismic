@@ -10,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'spin-slow': 'spin 10s linear infinite', // Slower spin
+      },
+
       fontFamily: {
         sans: ['var(--font-dm-sans)'], // Use in Tailwind
       },

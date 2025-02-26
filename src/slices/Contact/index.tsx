@@ -62,7 +62,7 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
 
   return (
     <section className="relative w-full min-h-screen text-center text-white ">
-      <div className="w-full  max-w-7xl mx-auto md:my-32">
+      <div className="w-full  max-w-7xl mx-auto my-12">
         <div className="w-full flex flex-row justify-center  ">
 
 

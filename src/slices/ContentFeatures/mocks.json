@@ -1,0 +1,95 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Irure nostrud dolore est qui elit laboris labore. Eiusmod ipsum cupidatat sit ipsum id laboris mollit."
+						}
+					}
+				]
+			},
+			"texto": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sint magna culpa irure ipsum enim quis labore id deserunt eu exercitation ullamco. Ad consectetur ut est laboris dolore ipsum dolore. Proident reprehenderit amet non aliquip Lorem Lorem consequat elit quis ad non nostrud aliqua nostrud ad."
+						}
+					}
+				]
+			},
+			"grid": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"imagen",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+										"width": 5243,
+										"height": 3495
+									},
+									"url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+									"width": 5243,
+									"height": 3495,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"titulo",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Magna adipisicing excepteur occaecat."
+											}
+										}
+									]
+								}
+							],
+							[
+								"texto",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "In cillum sit proident id magna cupidatat aliqua. Occaecat est culpa est. Officia cupidatat elit culpa ex in nulla deserunt velit ut et ex."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

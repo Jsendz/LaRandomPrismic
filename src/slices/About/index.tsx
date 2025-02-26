@@ -15,30 +15,26 @@ const About = ({ slice }: AboutProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative h-full flex items-center justify-center text-center text-white"
+      className="relative w-full h-full md:h-screen flex flex-col md:flex-row items-center justify-center px-6 sm:px-12  py-16"
     >
-      <div className="w-full h-full md:h-screen relative -z-50">
-      {isFilled.image(slice.primary.fondo) && (
-              <PrismicNextImage
-                field={slice.primary.fondo}
-                alt=""
-                fill={true}
-                className="object-cover bg-cover"
-              />
-            )}
-      
-      <div className="p-8 rounded-lg max-w-3xl absolute right-3 bottom-20">
-        
-          {isFilled.richText(slice.primary.textotote) && (
-            <div className=" about text-balance text-black text-4xl md:text-5xl font-bold">
-              <PrismicRichText field={slice.primary.textotote} />
-            </div>
-          )} 
-          
-          
-          
-         
-        </div>
+      <div className="w-full md:w-1/2 flex justify-center">
+        {isFilled.image(slice.primary.fondo) && (
+          <PrismicNextImage
+            field={slice.primary.fondo}
+            alt=""
+            width={600}
+            height={500}
+            className="w-full h-auto max-w-md md:max-w-full rounded-lg"
+          />
+        )}
+      </div>
+
+      <div className="w-full md:w-1/2 p-6  md:pl-10">
+        {isFilled.richText(slice.primary.textotote) && (
+          <div className="about  font-semibold text-gray-900">
+            <PrismicRichText field={slice.primary.textotote} />
+          </div>
+        )}
       </div>
     </section>
   );

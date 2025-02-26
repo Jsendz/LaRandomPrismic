@@ -167,6 +167,73 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
+type ContenidoDocumentDataSlicesSlice = CallToActionSlice;
+
+/**
+ * Content for Contenido documents
+ */
+interface ContenidoDocumentData {
+  /**
+   * meta_image field in *Contenido*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contenido.meta_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * meta_description field in *Contenido*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contenido.meta_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * titulo field in *Contenido*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contenido.titulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Contenido*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contenido.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ContenidoDocumentDataSlicesSlice>;
+}
+
+/**
+ * Contenido document from Prismic
+ *
+ * - **API ID**: `contenido`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContenidoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ContenidoDocumentData>,
+    "contenido",
+    Lang
+  >;
+
 type EventDocumentDataSlicesSlice =
   | ImageCarouselSlice
   | HeroSlice
@@ -245,6 +312,9 @@ export type EventDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventDocumentData>, "event", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | ImageCarouselSlice
+  | CtacontentSlice
+  | ContentFeaturesSlice
   | PostSlice
   | ContactSlice
   | BlogListSlice
@@ -502,6 +572,7 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | ArtistDocument
   | BlogPostDocument
+  | ContenidoDocument
   | EventDocument
   | PageDocument
   | SettingsDocument;
@@ -978,6 +1049,183 @@ type ContactSliceVariation = ContactSliceDefault;
 export type ContactSlice = prismic.SharedSlice<
   "contact",
   ContactSliceVariation
+>;
+
+/**
+ * Item in *ContentFeatures → Default → Primary → grid*
+ */
+export interface ContentFeaturesSliceDefaultPrimaryGridItem {
+  /**
+   * imagen field in *ContentFeatures → Default → Primary → grid*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_features.default.primary.grid[].imagen
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagen: prismic.ImageField<never>;
+
+  /**
+   * titulo field in *ContentFeatures → Default → Primary → grid*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_features.default.primary.grid[].titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * texto field in *ContentFeatures → Default → Primary → grid*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_features.default.primary.grid[].texto
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  texto: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ContentFeatures → Default → Primary*
+ */
+export interface ContentFeaturesSliceDefaultPrimary {
+  /**
+   * titulo field in *ContentFeatures → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_features.default.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * texto field in *ContentFeatures → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_features.default.primary.texto
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  texto: prismic.RichTextField;
+
+  /**
+   * grid field in *ContentFeatures → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_features.default.primary.grid[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  grid: prismic.GroupField<
+    Simplify<ContentFeaturesSliceDefaultPrimaryGridItem>
+  >;
+}
+
+/**
+ * Default variation for ContentFeatures Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentFeaturesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContentFeaturesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContentFeatures*
+ */
+type ContentFeaturesSliceVariation = ContentFeaturesSliceDefault;
+
+/**
+ * ContentFeatures Shared Slice
+ *
+ * - **API ID**: `content_features`
+ * - **Description**: ContentFeatures
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentFeaturesSlice = prismic.SharedSlice<
+  "content_features",
+  ContentFeaturesSliceVariation
+>;
+
+/**
+ * Primary content in *Ctacontent → Default → Primary*
+ */
+export interface CtacontentSliceDefaultPrimary {
+  /**
+   * titulo field in *Ctacontent → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ctacontent.default.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * texto field in *Ctacontent → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ctacontent.default.primary.texto
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  texto: prismic.RichTextField;
+
+  /**
+   * imagen field in *Ctacontent → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ctacontent.default.primary.imagen
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagen: prismic.ImageField<never>;
+
+  /**
+   * boton field in *Ctacontent → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ctacontent.default.primary.boton
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  boton: prismic.LinkField;
+}
+
+/**
+ * Default variation for Ctacontent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CtacontentSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CtacontentSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Ctacontent*
+ */
+type CtacontentSliceVariation = CtacontentSliceDefault;
+
+/**
+ * Ctacontent Shared Slice
+ *
+ * - **API ID**: `ctacontent`
+ * - **Description**: Ctacontent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CtacontentSlice = prismic.SharedSlice<
+  "ctacontent",
+  CtacontentSliceVariation
 >;
 
 /**
@@ -1603,6 +1851,9 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      ContenidoDocument,
+      ContenidoDocumentData,
+      ContenidoDocumentDataSlicesSlice,
       EventDocument,
       EventDocumentData,
       EventDocumentDataSlicesSlice,
@@ -1638,6 +1889,15 @@ declare module "@prismicio/client" {
       ContactSliceDefaultPrimary,
       ContactSliceVariation,
       ContactSliceDefault,
+      ContentFeaturesSlice,
+      ContentFeaturesSliceDefaultPrimaryGridItem,
+      ContentFeaturesSliceDefaultPrimary,
+      ContentFeaturesSliceVariation,
+      ContentFeaturesSliceDefault,
+      CtacontentSlice,
+      CtacontentSliceDefaultPrimary,
+      CtacontentSliceVariation,
+      CtacontentSliceDefault,
       EventosSlice,
       EventosSliceDefaultPrimaryModuloItem,
       EventosSliceDefaultPrimary,

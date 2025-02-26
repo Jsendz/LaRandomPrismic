@@ -25,7 +25,7 @@ const SingleEvent = ({ slice }: SingleEventProps): JSX.Element => {
           <div className="w-full flex justify-center">
           {isFilled.image(slice.primary.imagen_evento) && (
           <PrismicNextImage
-            className="es-call-to-action__image rounded-xl w-[350px]"
+            className="es-call-to-action__image rounded-xl w-[350px] "
             field={slice.primary.imagen_evento}
            alt=""
            

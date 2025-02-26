@@ -27,6 +27,15 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_carousel": {
+              "type": "SharedSlice"
+            },
+            "ctacontent": {
+              "type": "SharedSlice"
+            },
+            "content_features": {
+              "type": "SharedSlice"
+            },
             "post": {
               "type": "SharedSlice"
             },

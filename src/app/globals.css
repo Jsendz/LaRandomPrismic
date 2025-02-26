@@ -14,14 +14,32 @@
   }
 
   .about h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
 
   }
 
   .about h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     color: chartreuse;
 
+  }
+
+  .clip-path-custom {
+    clip-path: polygon(46% 6%, 100% 6%, 100% 30%, 100% 70%, 100% 93%, 45% 93%, 57% 50%);
+  }
+  
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin {
+    animation: spin 1s linear infinite;
   }
