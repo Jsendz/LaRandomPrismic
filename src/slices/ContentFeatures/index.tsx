@@ -54,7 +54,7 @@ const ContentFeatures = ({ slice }: ContentFeaturesProps): JSX.Element => {
       
       {/* Call to Action */}
       <div className="mt-8 sm:mt-12">
-        <Link href="/contact" className="bg-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-lg font-medium hover:bg-red-700 transition-all">
+        <Link href="/contacte" className="bg-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-lg font-medium hover:bg-red-700 transition-all">
           Vull informació
         </Link>
       </div>
