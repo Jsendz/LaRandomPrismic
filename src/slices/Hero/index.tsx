@@ -3,15 +3,9 @@ import ButtonLink from "@/components/ButtonLink";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps,PrismicText } from "@prismicio/react";
-import { div } from "framer-motion/client";
-import localFont from 'next/font/local'
 
 
 
-const myFont = localFont({
-  src: './loos light.otf',
-  display: 'swap',
-})
 
 /**
  * Props for `Hero`.

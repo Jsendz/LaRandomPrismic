@@ -21,10 +21,10 @@ const ContentFeatures = ({ slice }: ContentFeaturesProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-       <div className="relative w-full text min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 md:px-20 xl:px-40 py-16 text-center">
+       <div className="relative w-full text min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 md:px-20  py-16 text-center">
        {isFilled.richText(slice.primary.titulo) && (
                     
-                    <div className="text-2xl md:text-6xl font-semibold mb-10 text-slate-800  ">
+                    <div className="text-2xl md:text-6xl font-semibold mb-10 text-slate-800 my-24  ">
                       <PrismicRichText field={slice.primary.titulo} />
                     </div>
                   )}
