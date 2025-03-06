@@ -20,9 +20,9 @@ const BlogList = ({ slice }: BlogListProps): JSX.Element => {
       <div className="text-center my-12 md:my-24">
               
               {isFilled.richText(slice.primary.subtitulo) && (
-                <h2 className="text-xl md:text-6xl font-semibold text-slate-800">
+                <div className="text-xl md:text-6xl font-semibold text-slate-800">
                   <PrismicText field={slice.primary.subtitulo} />
-                </h2>
+                </div>
               )}
             </div>
       
